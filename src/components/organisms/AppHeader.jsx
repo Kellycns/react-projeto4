@@ -19,7 +19,7 @@ export default function AppHeader() {
                 <Link to={"/feed"} aria-label="novo post"><i className="fa-solid fa-square-plus"></i></Link>
                 <Link to={"/feed"} aria-label="explorar"><i className="fa-solid fa-compass"></i></Link>
                 <Link to={"/feed"} aria-label="notificações"><i className="fa-solid fa-bell"></i></Link>
-                <Link to={"/feed"} aria-label="meu perfil"><img src={perfil} alt="perfil" className="icone" id="icone_fotos"/></Link>
+                <Link to={"/"} aria-label="meu perfil"><img src={perfil} alt="perfil" className="icone" id="icone_fotos"/></Link>
             </nav>
         </header>
     </section>

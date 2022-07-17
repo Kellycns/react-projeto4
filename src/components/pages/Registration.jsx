@@ -59,7 +59,7 @@ export default function registration() {
         </p>
         </section>
         <section className="conectar">
-        <p>Tem uma conta? <Link to="index.html">Conecte-se</Link></p>
+        <p>Tem uma conta? <Link to={"/"}>Conecte-se</Link></p>
         </section>
     </div>
   );

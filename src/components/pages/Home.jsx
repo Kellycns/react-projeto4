@@ -12,7 +12,7 @@ export default function Home() {
           <button type="submit">ENTRAR</button>
         </form>
 
-        <Link to={"/user"}>
+        <Link to={"/cadastro"}>
             <h3>Criar uma conta</h3>
         </Link>
       </div>
