@@ -13,7 +13,7 @@ export default function UseBio(props) {
         <div className="detalhes_info">
             <div className="detalhes_info_container">
                 <div className="detalhes_info_nome">
-                    <h2 className="nome_perfil" aria-label="nome de usuáro">{props.name}</h2> 
+                    <h2 className="nome_perfil" aria-label="nome de usuáro">{props.username}</h2> 
                     <div className="detalhes_botoes">
                         <input type="button" value="Editar perfil" className="botao"/>
                         <Link to=""><img src={config} alt="configurações" className="configuracoes"/></Link>
@@ -24,7 +24,7 @@ export default function UseBio(props) {
                         <li><span>1.998</span>Seguindo</li>
                     </ul>
                     <div className="detalhes_info_bio">
-                        <h2 aria-label="nome">Felino De Tal</h2>
+                        <h2 aria-label="nome">{props.name}</h2>
                         <p aria-label="bio">{props.bio}</p>   
                     </div>
                 </div>      

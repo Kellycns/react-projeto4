@@ -29,26 +29,24 @@
     object-fit: cover;
     border-radius: 50%;
 }
-.detalhes_info_nome{
-    
-}
 .nome_perfil{
     font-weight: bold;
     font-size: 28px;
+    max-width: 300px;
 }
 .detalhes_botoes{
     display: flex;
-    justify-content: right;
+    padding-top: 10px;
 }
 .botao{
-    width: 100px;
+    width: 140px;
     height: 30px;
     padding: 5px 9px;
     font-size: 14px;
     background-color: #fafafa;
     border:1px solid rgb(194, 194, 194);
     border-radius: 5px;
-    margin: 0 20px;
+    margin: 0 20px 0 0;
 }
 .botao:hover{
     cursor: pointer;
@@ -68,6 +66,9 @@
 .detalhes_info_numeros li span{
     font-weight: bold;
     margin-right: 6px;
+}
+.detalhes_info_bio{
+    max-width: 500px;
 }
 .detalhes_info_bio h2{
     font-size: 16px;
