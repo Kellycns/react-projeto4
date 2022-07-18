@@ -6,10 +6,7 @@ import { UserBio, UserPosts } from '../molecules';
 
 export default function Profile() {
     const {userId} = useParams();
-
-    const [posts, setPosts] = React.useState({
-        image:""
-    });
+    
     const [user, setUser] = React.useState({
         avatar:"",
         bio:"",
@@ -23,7 +20,6 @@ export default function Profile() {
         ).then((response) => response.json())
         .then(data => {
           setUser(data[0].userData);
-          setPosts(data);
         });
       }, []);
 
@@ -34,7 +30,7 @@ export default function Profile() {
         <main className="conteudo">
             <div className='conteudo_container'>
                 <UserBio avatar={user.avatar} bio={user.bio} name={`${user.fn} ${user.ln}`} username={user.userName}/>
-                <UserPosts posts={user.image}/>
+                <UserPosts/>
             </div>
         </main>
     </div>

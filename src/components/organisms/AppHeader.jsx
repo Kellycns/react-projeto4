@@ -2,9 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom';
 
-import perfil from '../../img/perfil.jpg'
-import Teste from './Teste';
-
 export default function AppHeader(props) {
     const {userId} =useParams();
   
@@ -29,13 +26,13 @@ export default function AppHeader(props) {
             <div className="searchBar">
                 <input type="text" placeholder="Pesquisar" aria-label="barra de pesquisa"/>
             </div>
-            <nav className="itens" avatar={user.avatar}>
+            <nav className="itens" >
                 <Link to={"/feed"} aria-label="home"><i className="fa-solid fa-house-chimney"></i></Link>
                 <Link to={"/feed"} aria-label="mensagens"><i className="fa-solid fa-comment"></i></Link>
                 <Link to={"/feed"} aria-label="novo post"><i className="fa-solid fa-square-plus"></i></Link>
                 <Link to={"/feed"} aria-label="explorar"><i className="fa-solid fa-compass"></i></Link>
                 <Link to={"/feed"} aria-label="notificações"><i className="fa-solid fa-bell"></i></Link>
-                <Teste avatar= {user.avatar}/>
+                <Link to={""} aria-label="meu perfil"><img src={user.avatar} alt="perfil" className="icone" id="icone_fotos"/></Link>
             </nav>
         </header>
     </section>
