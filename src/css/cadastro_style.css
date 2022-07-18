@@ -52,6 +52,7 @@
     border: none;
     color: #fff;
     background-color: rgb(17, 114, 101);
+    cursor: pointer;
 }
 .politica{
     width: 300px;

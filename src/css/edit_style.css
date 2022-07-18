@@ -1,0 +1,21 @@
+.edit_container{
+    width: 500px;
+    height: 700px;
+    margin: auto;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border:1px solid rgb(194, 194, 194);
+    border-radius: 5px;
+}
+.edit_container img {
+    margin: 20px;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+#new-bio{
+    height: 100px;
+}
