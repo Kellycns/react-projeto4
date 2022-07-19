@@ -3,27 +3,27 @@ import { useParams } from 'react-router-dom';
 
 import { Default } from '../templates';
 import { UserBio, UserPosts } from '../molecules';
+import { AppLoading } from '../organisms';
 
 export default function Profile() {
     const {userId} = useParams();
+    const [isLoading, setIsLoading] = React.useState(true);
+
     
-    const [user, setUser] = React.useState({
-        avatar:"",
-        bio:"",
-        fn:"",
-        ln:"",
-        userName:""
-    })
+    const [user, setUser] = React.useState([null]);
 
     React.useEffect(() => {
         fetch(`https://62c4e487abea8c085a7e022a.mockapi.io/users/${userId}/posts`
         ).then((response) => response.json())
         .then(data => {
           setUser(data[0].userData);
+          setIsLoading(false);
         });
       }, []);
 
-  return (
+      return isLoading ? (
+        <AppLoading/>
+        ) : (
     <div className="body" >
         <Default/>
 

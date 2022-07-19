@@ -1,10 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-import perfil from '../../img/perfil.jpg';
 import config from '../../img/icones/configuracoes.png';
 
 export default function UseBio(props) {
+
   return (
     <section className="detalhes" aria-label="informações do perfil">
         <figure className="detalhes_foto" aria-label="imagem de perfil">

@@ -2,10 +2,10 @@ import React from 'react'
 import { useParams } from 'react-router-dom';
 
 import { Default } from '../templates'
-
-import perfil from '../../img/perfil.jpg'
+import { AppLoading } from '../organisms';
 
 export default function EditProfile() {
+    const [isLoading, setIsLoading] = React.useState(true);
     const {userId} =useParams();
 
     const [user, setUser] = React.useState({
@@ -17,42 +17,45 @@ export default function EditProfile() {
         ).then((response) => response.json())
         .then(data => {
           setUser(data[0].userData);
+          setIsLoading(false);
         });
       }, []);
-  return (
-    <div>
-        <Default/>
-        <div className='edit'>
-            <div className='edit_container'>
-                <img src={user.avatar}/>
-                <form className='edit_form'>
-                    <input
-                        type="text"
-                        name="name"
-                        id="new-name"
-                        className="campo"
-                        placeholder="Novo nome"
-                    />
-                    <input
-                        type="text"
-                        name="username"
-                        id="new-username"
-                        className="campo"
-                        placeholder="Novo nome de usuario"
-                    />
-                    <input
-                        type="text"
-                        name="bio"
-                        id="new-bio"
-                        className="campo"
-                        placeholder="Nova bio"
-                    />
-                    <button type="submit" value="salvar" className="botao_enviar">
-                    Salvar
-                    </button>
-                </form>
+    return isLoading ? (
+        <AppLoading/>
+        ) : (
+        <div>
+            <Default/>
+            <div className='edit'>
+                <div className='edit_container'>
+                    <img src={user.avatar}/>
+                    <form className='edit_form'>
+                        <input
+                            type="text"
+                            name="name"
+                            id="new-name"
+                            className="campo"
+                            placeholder="Novo nome"
+                        />
+                        <input
+                            type="text"
+                            name="username"
+                            id="new-username"
+                            className="campo"
+                            placeholder="Novo nome de usuario"
+                        />
+                        <input
+                            type="text"
+                            name="bio"
+                            id="new-bio"
+                            className="campo"
+                            placeholder="Nova bio"
+                        />
+                        <button type="submit" value="salvar" className="botao_enviar">
+                        Salvar
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
   )
 }

@@ -10,7 +10,7 @@ import gato7 from '../../img/gato (7).jpg';
 import gato8 from '../../img/gato (8).jpg';
 import gato9 from '../../img/gato (9).png';
 
-export default function UserPosts() {
+export default function UserPosts(props) {
   return (
     <section className="fotos" aria-label="postagens">
     <div className="fotos_galeria">
