@@ -5,7 +5,7 @@ import { Default } from '../templates';
 
 export default function Feed() {
   return (
-    <body>
+<body>
         <Default/>
 
         <main id="feedMain">
@@ -111,5 +111,5 @@ export default function Feed() {
 
         </main>
     </body>
-  );
+  )
 }

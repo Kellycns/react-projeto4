@@ -27,7 +27,7 @@ function App() {
       <Routes>
         <Route index element={<Home/>}/>
         <Route path="/cadastro" element={<Registration />} />
-        <Route path="/feed" element={<Feed/>}/>
+        <Route path="/user/:userId/feed" element={<Feed/>}/>
         <Route path="/user/:userId" element={<Profile />} />
         <Route path="/user/:userId/edit" element={<EditProfile/>}/>
       </Routes>

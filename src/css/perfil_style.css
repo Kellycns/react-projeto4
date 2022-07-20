@@ -77,13 +77,18 @@
 }
 .fotos{
     margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
 }
 .fotos_galeria{
     display: flex;
+    flex-direction: row;
+/*    display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 20px;
-    min-width: 305px;
+    min-width: 305px;*/
 }
 .fotos_galeria img{
     width: 250px;

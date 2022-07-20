@@ -1,10 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import config from '../../img/icones/configuracoes.png';
 
 export default function UseBio(props) {
+   // const navigate = useNavigate();
 
+   // const[users, setUsers] = React.useState([]);
+  //  const[currentUser, setCurrentUser] = React.useState("");
+    
+  //  const onClick = () => navigate(`/user/${}/edit`)
   return (
     <section className="detalhes" aria-label="informações do perfil">
         <figure className="detalhes_foto" aria-label="imagem de perfil">
@@ -33,3 +39,17 @@ export default function UseBio(props) {
     </section>
   )
 }
+//{users
+ //   .map((user) => (
+   //   <option key={user.Id} value={user.id}>{`${user.fn} ${user.ln}`}</option>
+     // ))}
+
+//      {props.users
+  //      .map(user => (
+    //    <UserListItem 
+      //    key={user.id}
+       //   id={user.id} 
+        //  src={user.avatar} 
+         // name={`${user.fn} ${user.ln}`}
+       // />  
+      //  ))}  
