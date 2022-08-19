@@ -5,23 +5,23 @@ import { useNavigate } from 'react-router-dom';
 import config from '../../img/icones/configuracoes.png';
 
 export default function UseBio(props) {
-   // const navigate = useNavigate();
-
-   // const[users, setUsers] = React.useState([]);
-  //  const[currentUser, setCurrentUser] = React.useState("");
-    
-  //  const onClick = () => navigate(`/user/${}/edit`)
+  
+    let navigate = useNavigate(); 
+    const routeChange = () =>{ 
+      let path = `/user/${props.id}/edit`; 
+      navigate(path);
+    }
   return (
     <section className="detalhes" aria-label="informações do perfil">
         <figure className="detalhes_foto" aria-label="imagem de perfil">
-            <img src={props.avatar}/>
+            <img src={`https://cdn.traction.one/pokedex/pokemon/${props.id}.png`}/>
         </figure>
         <div className="detalhes_info">
             <div className="detalhes_info_container">
                 <div className="detalhes_info_nome">
-                    <h2 className="nome_perfil" aria-label="nome de usuáro">{props.username}</h2> 
+                    <h2 className="nome_perfil" aria-label="nome de usuáro">{props.name}</h2> 
                     <div className="detalhes_botoes">
-                        <input type="button" value="Editar perfil" className="botao"/>
+                         <input type="button" value="Editar perfil" className="botao" onClick={routeChange}/> {/*onClick={routeChange} */}
                         <Link to=""><img src={config} alt="configurações" className="configuracoes"/></Link>
                     </div>
                     <ul className="detalhes_info_numeros">
@@ -39,17 +39,3 @@ export default function UseBio(props) {
     </section>
   )
 }
-//{users
- //   .map((user) => (
-   //   <option key={user.Id} value={user.id}>{`${user.fn} ${user.ln}`}</option>
-     // ))}
-
-//      {props.users
-  //      .map(user => (
-    //    <UserListItem 
-      //    key={user.id}
-       //   id={user.id} 
-        //  src={user.avatar} 
-         // name={`${user.fn} ${user.ln}`}
-       // />  
-      //  ))}  

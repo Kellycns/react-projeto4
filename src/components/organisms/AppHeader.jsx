@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom';
 
-export default function AppHeader(props) {
+export default function AppHeader() {
     const {userId} =useParams();
   
     const [user, setUser] = React.useState({
@@ -32,7 +32,7 @@ export default function AppHeader(props) {
                 <Link to={"/feed"} aria-label="novo post"><i className="fa-solid fa-square-plus"></i></Link>
                 <Link to={"/feed"} aria-label="explorar"><i className="fa-solid fa-compass"></i></Link>
                 <Link to={"/feed"} aria-label="notificações"><i className="fa-solid fa-bell"></i></Link>
-                <Link to={""} aria-label="meu perfil"><img src={user.avatar} alt="perfil" className="icone" id="icone_fotos"/></Link>
+                <Link to={`/user/${userId}`} aria-label="meu perfil"><img src={`https://cdn.traction.one/pokedex/pokemon/${userId}.png`} alt="perfil" className="icone" id="icone_fotos"/></Link>
             </nav>
         </header>
     </section>

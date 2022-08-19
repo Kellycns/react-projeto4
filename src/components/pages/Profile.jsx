@@ -1,40 +1,76 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { Default } from '../templates';
 import { UserBio, UserPosts } from '../molecules';
 import { AppLoading } from '../organisms';
+import api from '../../api';
 
-export default function Profile() {
+class Profile extends Component{
 
-    const {userId} = useParams();
-    const [isLoading, setIsLoading] = React.useState(true);
+  state= {
+    users: [],
+  }
 
-    const [posts, setPosts] = React.useState([]);
-    const [user, setUser] = React.useState([null]);
+  async componentDidMount(){
+    const response = await api.get();
 
-    React.useEffect(() => {
-        fetch(`https://62c4e487abea8c085a7e022a.mockapi.io/users/${userId}/posts`
-        ).then((response) => response.json())
-        .then(data => {
-          setUser(data[0].userData);
-          setPosts(data);
-          setIsLoading(false);
-        });
-      }, []);
+    this.setState({users: response.data});
 
-      return isLoading ? (
-        <AppLoading/>
-        ) : (
+    console.log(response.data);
+  }
+
+  render(){
+
+    const { users } = this.state;
+    return(
     <div className="body" >
         <Default/>
 
         <main className="conteudo">
             <div className='conteudo_container'>
-                <UserBio avatar={user.avatar} bio={user.bio} name={`${user.fn} ${user.ln}`} username={user.userName} />
-                <UserPosts posts={posts}/>
+              {users.map(user => (<UserBio
+                key={user.id}
+                id={user.id}
+                bio={user.text}
+                name={user.username}
+              />))}
+                {/*<UserPosts posts={posts}/>*/}
             </div>
         </main>
     </div>
-  )
+    );
+  }
 }
+
+// function Profile() {
+
+    // const {id} = useParams();
+    // const [isLoading, setIsLoading] = React.useState(true);
+
+    // const [posts, setPosts] = React.useState([]);
+    // const [user, setUser] = React.useState([]);
+
+    // React.useEffect(() => {
+    //     fetch(`http://127.0.0.1:5000/api/post/${id}`
+    //     ).then((response) => response.json())
+    //     .then(data => {
+    //       setUser(data);
+    //       setIsLoading(false);
+    //     });
+    //   }, []);
+
+//       return (
+//     <div className="body" >
+//         <Default/>
+
+//         <main className="conteudo">
+//             <div className='conteudo_container'>
+//                 <UserBio /> {/* avatar={id} bio={user.text} name={user.username} username={user.username}  */}
+//                 {/*<UserPosts posts={posts}/>*/}
+//             </div>
+//         </main>
+//     </div>
+//   )
+// }
+export default Profile;
