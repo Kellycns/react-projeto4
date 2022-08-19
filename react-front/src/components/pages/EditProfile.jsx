@@ -3,64 +3,63 @@ import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 import { Default } from '../templates'
-import { AppLoading } from '../organisms';
+import { Form } from '../molecules';
 
-export default function EditProfile() {
-    const [isLoading, setIsLoading] = React.useState(true);
-    const {userId} =useParams();
+import axios from 'axios';
 
-    const [user, setUser] = React.useState([null]);
+function withParams(Component) {
+  return props => <Component {...props} params={useParams()} />;
+}
+class Profile extends React.Component{
 
-      React.useEffect(() => {
-        fetch(`https://62c4e487abea8c085a7e022a.mockapi.io/users/${userId}/posts`
-        ).then((response) => response.json())
-        .then(data => {
-          setUser(data[0].userData);
-          setIsLoading(false);
-        });
-      }, []);
+  state= {
+    users: [],
+  }
 
-      let navigate = useNavigate(); 
-      const routeChange = () =>{ 
-        let path = `/user/${userId}`; 
-        navigate(path);
-      }
-    return isLoading ? (
-        <AppLoading/>
-        ) : (
-        <div>
+
+  async componentDidMount(){
+ 
+    //Pega a userId da URL
+    const { userId } = this.props.params
+    console.log(userId)
+
+    // const response = await api.get();
+
+    //Pega o perfil do banco de dados com a respectiva id
+    const response = await axios({
+      method: 'get',
+      url: `http://127.0.0.1:5000/api/post/${userId}`
+    })
+
+    this.setState({users: response.data});
+
+    console.log(response.data);
+  }
+
+  render(){
+
+    console.log(this.props)
+
+    let { users } = this.state;
+    
+    //passa o objeto como array p/ poder usar a funcao map
+    if(!Array.isArray(users)){
+      users = [users]
+    }
+    console.log(users)
+
+
+    return(
+          <div>
             <Default/>
             <div className='edit'>
-                <div className='edit_container'>
-                    <img src={`https://cdn.traction.one/pokedex/pokemon/${userId}.png`}/>
-                    <form className='edit_form'>
-                        <input
-                            type="text"
-                            name="name"
-                            id="new-name"
-                            className="campo"
-                            placeholder="Novo nome"
-                        />
-                        <input
-                            type="text"
-                            name="username"
-                            id="new-username"
-                            className="campo"
-                            placeholder="Novo nome de usuario"
-                        />
-                        <input
-                            type="text"
-                            name="bio"
-                            id="new-bio"
-                            className="campo"
-                            placeholder="Nova bio"
-                        />
-                        <button type="submit" value="salvar" className="botao_enviar" onClick={routeChange}>
-                        Salvar
-                        </button>
-                    </form>
-                </div>
+            {users.map(user => (<Form
+              key={user.id}
+              id={user.id}
+            />))}
+
             </div>
         </div>
-  )
+    );
+  }
 }
