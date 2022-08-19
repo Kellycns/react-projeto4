@@ -1,12 +1,24 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import {useForm} from 'react-hook-form';
+import axios from 'axios';
+// import * as yup from 'yup';
 
-import {useForm} from 'react-hook-form'
 
+// const validateInfo = yup.object.shape({
+//     text: yup.string().required(),
+//     username: yup.string().required():
+// })
 export default function Form(props) {
 
     const {register, handleSubmit, formState: {erros}} = useForm()
-    const addpost = data => data console.log(data)
+    const addpost = data => axios.post("http://localhost:5000/api/post/add", data)
+    .then(() =>{
+        console.log("Deu certo")
+    })
+    .catch(() => {
+        console.log("Deu errado")
+    })
     // let navigate = useNavigate(); 
     // const submit = (e) =>{ 
     //     let path = `/user/${props.id}`; 
