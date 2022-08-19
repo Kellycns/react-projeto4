@@ -2,28 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {useForm} from 'react-hook-form';
 import axios from 'axios';
-// import * as yup from 'yup';
 
-
-// const validateInfo = yup.object.shape({
-//     text: yup.string().required(),
-//     username: yup.string().required():
-// })
 export default function Form(props) {
 
     const {register, handleSubmit, formState: {erros}} = useForm()
-    const addpost = data => axios.post("http://localhost:5000/api/post/add", data)
+const addpost = data => axios.put(`http://localhost:5000/api/post/update/${props.id}`, data)
     .then(() =>{
         console.log("Deu certo")
     })
     .catch(() => {
         console.log("Deu errado")
     })
-    // let navigate = useNavigate(); 
-    // const submit = (e) =>{ 
-    //     let path = `/user/${props.id}`; 
-    //     navigate(path);
-    // }
+
   return (
     <div className='edit_container'>
         <img src={`https://cdn.traction.one/pokedex/pokemon/${props.id}.png`}/>
